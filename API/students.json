@@ -1,0 +1,18 @@
+[{
+    "id_suario":2,
+    "imagen":"jose.jpg",
+    "cedula":"1095301238",
+    "nombre":"angelo prada",
+    "programa":"campus",
+    "sexo":"M",
+    "jornada":"DIURNA"
+},
+{
+    "id_suario":3,
+    "imagen":"juan.jpg",
+    "cedula":"1094301238",
+    "nombre":"jose prada",
+    "programa":"campus SIIIU",
+    "sexo":"M",
+    "jornada":"NOCTURNA"
+}]
