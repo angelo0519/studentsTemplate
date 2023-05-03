@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded",()=>{
     //1. FETCH API Para consumir un json con un objeto "student.json"
     // getStudent();
-    getStudents();
+    //2.FETCH API para consumir un JSON con un array de objetos 
+    //getStudents();
+    //3. FETCH API para consumir un JSON desde una WEB API publicada en internet 
+    getStudentFromPublicApi()
 })
+    //1. FETCH API Para consumir un json con un objeto "student.json"
 
 function getStudent(){
     fetch('../API/student.json')
@@ -27,6 +31,7 @@ function showOneStudent({idUsuario,nombre,carrera,sexo,jornada }){
     `;
     contenedor.appendChild(row)
 }
+    //2.FETCH API para consumir un JSON con un array de objetos 
 
 function getStudents(){
     const url="../API/students.json";
@@ -43,17 +48,40 @@ function getStudents(){
 function showOneStudent(students){
     const contenedor = document.querySelector('tbody')
     students.forEach((student) => {
-        const {idUsuario,nombre,carrera,sexo,jornada}=student 
+        const {id_usuario,nombre,programa,sexo,jornada}=student 
         const rows = document.createElement('tr');
         rows.innerHTML=`
         
-        <td> ${idUsuario}</td>
+        <td> ${id_usuario}</td>
         <td> ${nombre}</td>
-        <td> ${carrera}</td>
+        <td> ${programa}</td>
         <td> ${sexo}</td>
         <td> ${jornada}</td>
         `;
-        contenedor 
+        contenedor.appendChild(rows)
     });
     
 }
+
+    //3. FETCH API para consumir un JSON desde una WEB API publicada en internet 
+async function getStudentFromPublicApi(){
+    const url="https://vermenmasterchief.tk/estudiantes.php";
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        showOneStudent(data.datos)
+
+    } catch (error) {
+        console.log(error);        
+    }
+}
+    // fetch(url)
+    //     .then(response  =>{
+    //         return response.json();
+    //         // console.log(response);
+    //     })
+    //     .then(data =>{
+    //         showOneStudent  (data.datos);
+    //         console.log(data);
+    //     })
+    
